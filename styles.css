@@ -1,0 +1,303 @@
+/* anek-latin-regular - latin_latin-ext */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Anek Latin';
+    font-style: normal;
+    font-weight: 400;
+    src: url('anek-latin-v4-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit; /* box sizing adjustment, adviced by youtub */
+}
+
+#header {
+    /* header */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+    gap: 12px;
+    width: auto;
+    height: auto; /* edited */
+    background: #40B58B;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+a.white_link {
+    /* Text */
+    width: auto; /* edited */
+    height: auto; /* edited */
+    font-family: 'Anek Latin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+a.green_link {
+    /* Text */
+    width: auto; /* edited */
+    height: auto; /* edited */
+    font-family: 'Anek Latin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #40B58B;
+}
+
+
+#top-title {
+    /* Pandunia green dictionary */
+    width: 336px;
+    height: auto; /* edited */
+    font-family: 'Anek Latin';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+    text-align: center;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+#search-bar {
+    /* search-bar */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0px 16px;
+    gap: 8px;
+    width: auto; /* edited */
+    height: 32px;
+    background: #FFFFFF;
+    border-radius: 100px;
+    /* Inside auto layout */
+
+    flex: 1;/*none; edited, must grow*/
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+#contents {
+    /* contents */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 6px 12px;
+    width: auto; /* edited */
+    height: auto; /* edited */
+    /* Inside auto layout */
+
+    flex: none; /*edited*/
+    order: 1;
+    flex-grow: 1;
+    /* flex-wrap for big screens*/
+    flex-wrap: wrap;
+}
+
+.entry {
+    /* Entry */
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 6px 16px; /* edited padding > margin */
+    width: auto; /* edited */
+    max-width: 360px;
+    height: auto; /* edited */
+    background: #FFFFFF;
+    border-bottom: 1px solid #C0CACA;
+    /* Inside auto layout */
+
+    flex: 1; /* edited, trying to make fit */
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.headword {
+    /* Text */
+    width: auto; /* edited */
+    height: auto; /* edited */
+    font-family: 'Anek Latin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+
+
+    color: #2F3227;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.definition {
+    /* text text text */
+
+
+    width: 304px;
+    height: auto; /* edited */
+    font-family: 'Anek Latin';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+
+
+    color: #2F3227;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+#search-bar-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    /* | type a word here... */
+
+    width: 276px;
+    height: 32px;
+    font-family: 'Anek Latin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    /* identical to box height, or 100% */
+
+    color: #2F3227;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+::placeholder {
+    color: #C0CACA;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
+#search-bar-button {
+    background: transparent;
+    color: #40B58B;
+    /* Vector */
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+    font-size: 16px;
+    line-height: 16px;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    /* edited, hand pointer when the mouse if hovering over, it's a button*/
+    cursor: pointer;
+}
+
+#footer {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 6px;
+    gap: 12px;
+    width: auto;
+    height: auto;
+    /* Inside auto layout */
+
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    justify-content: space-between;
+    flex: none;
+    flex-wrap: wrap;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+
+.langsel {
+    /* Text */
+    width: auto; /* edited */
+    height: auto; /* edited */
+    font-family: 'Anek Latin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    /* identical to box height, or 150% */
+    color: #40B58B;
+    /* Inside auto layout */
+    flex: 1;
+    /* hand pointer when the mouse if hovering over, it's a button*/
+    cursor: pointer;
+
+}
+
+.selected_lang {
+    background: #40B58B;
+    border-radius: 100px;
+    /* Text */
+    width: auto; /* edited */
+    height: auto; /* edited */
+    font-family: 'Anek Latin';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    /* identical to box height, or 150% */
+    color: #FFFFFF;
+    /* Inside auto layout */
+    flex: 1;
+    /* hand pointer when the mouse if hovering over, it's a button*/
+    cursor: pointer;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Globasa GREEND</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="jquery.csv.min.js"></script>
+    <script src="jquery.js"></script>
+    <script src="static_dict.js"></script>
+    <script src="search.js"></script>
+</head>
+<body>
+    <header id="header">
+        <div id="top-title">
+            GLOBASA GREEN DICTIONARY
+        </div>
+        <div id="search-bar">
+            <input type="text"
+                   name="search-bar-input"
+                   id="search-bar-input"
+                   placeholder="| type a word here..." />
+            <div id="search-bar-button">
+                <span class="material-symbols-outlined">search</span>
+            </div>
+        </div>
+    </header>
+    <content id="contents">
+    </content>
+    <footer id="footer">
+        <div id="langsel-en" class="langsel selected_lang"> ENGLISH </div>
+        <div id="langsel-es" class="langsel"> SPANISH </div>
+        <div id="langsel-eo" class="langsel"> ESPERANTO </div>
+        <a class="green_link" rel="official site" href="https://globasa.net">globasa.net</a>
+    </footer>
+    
+    <script>
+        var langsel = "eng";
+        function searchHandler() {
+            var line = $('#search-bar-input').val().toLowerCase();
+            var resultsA = smartSearch(line, dictionary);
+            $('#contents').empty(); // clear the output area
+            resultsA.sort(function (a, b) {  // sort results by length
+                // ASC  -> a.length - b.length
+                // DESC -> b.length - a.length
+                return b.length - a.length;
+            });
+            var resultsB = foreignSearch(line, dictionary, langsel);
+
+            resultsC = resultsA.concat(resultsB);// combine two lists
+            results = resultsC.filter(function (item, pos) {
+                return resultsC.indexOf(item) == pos;
+            }); // and remove duplicates
+
+            for (const entry of results) {
+                var entry_box = $("<div/>", {
+                    class: 'entry'
+                });
+                var headword = $("<p/>", {
+                    class: 'headword',
+                    html: '(' + partOfSpeechLookup(entry, dictionary) + ') ' + entry
+                });
+                var definition = $("<p/>", {
+                    class: 'definition',
+                    html: translationLookup(entry, dictionary, langsel)
+                });
+                headword.appendTo(entry_box);
+                definition.appendTo(headword);
+                entry_box.appendTo("#contents");
+            }
+        }
+
+        $('#search-bar').on
+            ('keypress', function (e) { if (e.key == "Enter") searchHandler(); });
+        $('#search-bar-button').on('click', searchHandler);
+
+        $("#langsel-en").on("click", function (event) {
+            $(".selected_lang").removeClass("selected_lang");
+            $(this).addClass("selected_lang");
+            langsel = "eng";
+        });
+
+        $("#langsel-es").on("click", function (event) {
+            $(".selected_lang").removeClass("selected_lang");
+            $(this).addClass("selected_lang");
+            langsel = "spa";
+        });
+
+        $("#langsel-eo").on("click", function (event) {
+            $(".selected_lang").removeClass("selected_lang");
+            $(this).addClass("selected_lang");
+            langsel = "epo";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+Input
+-get the word
+-pick the dictionary (forms two dictionary objects/hashes)
+
+Data
+-raw csv dictionary (all languages)
+-language>language dictionary
+-pandunia form dictionary (crops pandunia words and maps them onto their origins)
+
+Algorithm
+-take the word
+--look it up in your chosen language
+-loop i from 0 to word's length
+--take the word's prefix of length i
+--look it up in the pandunia dictionaries
+---add the full morpheme to the result set
+-sort the results by length (as a rule, the biggest one is the fullest one)
+-format and output the results
