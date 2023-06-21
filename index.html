@@ -37,6 +37,20 @@
     </footer>
     
     <script>
+        // try to access remote dictionary from the official globasa site
+        var remote_dict_url = 'https://api.globasa.net/globasa-menalar-1.json';
+        $.getJSON(remote_dict_url, function (data) {
+            console.log("success requesting remote data");
+        }).done(function (data) {
+            dictionary = data; // replace local data with the remote data
+            console.log("success fetching remote data");
+        }).fail(function () {
+            console.log("error fetching remote data");
+        }).always(function () {
+            console.log("finished requesting remote data");
+        });
+
+        // init
         var langsel = "eng";
         function searchHandler() {
             var line = $('#search-bar-input').val().toLowerCase();
@@ -71,7 +85,7 @@
                 entry_box.appendTo("#contents");
             }
         }
-
+        // events
         $('#search-bar').on
             ('keypress', function (e) { if (e.key == "Enter") searchHandler(); });
         $('#search-bar-button').on('click', searchHandler);
