@@ -37,9 +37,11 @@ function smartSearch(line, dictionary) {
                 var sub = word.substring(i, j+1);
                 // if (dictionary.index[lang][word]) -- use index to search in languages other than Globasa
                 if (dictionary.words[sub])
-                    words_found.push(sub);
+                    words_found.push(sub);// root
                 if (dictionary.words['-'+sub])
-                    words_found.push('-'+sub);
+                    words_found.push('-'+sub);// suffix
+                if (dictionary.words[sub+'-'])
+                    words_found.push(sub+'-');// prefix
             }
     return words_found;
 }
